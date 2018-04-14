@@ -1,2 +1,2 @@
-alert("READY TO ROCK")
-console.log("READY TO ROCK")
+document.getElementById('txthearingdate').parentNode.prepend(document.createElement('Yesterday').addEventListener(() => document.getElementById('txthearingdate').value='yesterday'));
+const  = (date) => document.getElementById('txthearingdate').value=date

@@ -1,2 +1,2 @@
 document.getElementById('txthearingdate').parentNode.prepend(document.createElement('Yesterday').addEventListener(() => document.getElementById('txthearingdate').value='yesterday'));
-const  = (date) => document.getElementById('txthearingdate').value=date
+const fixit = (date) => document.getElementById('txthearingdate').value=date

@@ -1,4 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => [
-    document.getElementById('input').addEventListener('click', () => alert('input')),
-    document.getElementById('output').addEventListener('click', () => console.log('hello'))
+    document.getElementById('input').addEventListener('click', () => chrome.storage.sync.set({alpha: new Date()})),
+    document.getElementById('output').addEventListener('click', () => chrome.storage.sync.get('alpha', value => console.log))
 ])

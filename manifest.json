@@ -10,5 +10,12 @@
   "permissions": [
    "activeTab",
    "storage"
-   ]
+   ],
+  "content_scripts": [
+    {
+      "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
+      "css": ["mystyles.css"],
+      "js": ["myscript.js"]
+    }
+  ]
 }

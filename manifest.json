@@ -13,8 +13,8 @@
    ],
   "content_scripts": [
     {
-      "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
-      "css": ["mystyles.css"],
+      "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do*"],
+      "css": ["mystyle.css"],
       "js": ["myscript.js"]
     }
   ]

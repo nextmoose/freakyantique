@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Court Scraper",
+  "description": "This extension will scrape the court website",
+  "version": "1.0",
+  "browser_action": {
+   "default_icon": "flower.jpg",
+   "default_popup": "popup.html"
+  },
+  "permissions": [
+   "activeTab"
+   ]
+}

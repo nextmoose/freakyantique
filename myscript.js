@@ -1,8 +1,8 @@
 
 (button => [
-    (button.innerHTML='Yesterday'),
+    (button.innerHTML='Yesterday') &&
     document.getElementById('txthearingdate').parentNode.prepend(button),
-    button.addEventListener('click', () => document.getElementById('txthearingdate').value='yesterday')
+    button.addEventListener('click', event => [(event.preventDefault()), document.getElementById('txthearingdate').value='yesterday'])
 ])(document.createElement('button'))
 
 console.log('rock on');

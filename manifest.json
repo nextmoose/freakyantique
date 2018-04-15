@@ -1,0 +1,9 @@
+{
+    "manifest_version": 2,
+    "name": "My Extension",
+    "version": "versionString",
+    "content_scripts": [    {
+      "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
+      "js": ["script.js"]
+    }],
+}

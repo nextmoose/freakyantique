@@ -1,10 +1,13 @@
-const logit = message => value => {
-    console.log(message)
+const success = value => {
+    console.log("SUCCESS:")
     console.log(value)
     return value
 };
-const success = success => logit("SUCCESS:");
-const failure = failure => logit("FAILURE:");
+const failure = value => {
+    console.log("FAILURE:")
+    console.log(value)
+    return value
+};
 const querySelector = selector => new Promise((resolve, reject) => {
     try {
         console.log('trying...');

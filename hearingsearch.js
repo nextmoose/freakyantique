@@ -1,5 +1,5 @@
-Promise.all([
-        "gibberish",
-        querySelector("#txthearingdate")
-    ])
-    .then(success, failure);
+// Promise.all([
+//         "gibberish",
+//         querySelector("#txthearingdate")
+//     ])
+    querySelector("#txthearingdate").then(success, failure);

@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+
+    "name": "Court Scraper",
+    "description": "Scrapes the Court Website",
+    "version": "1.0",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [{
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do?welcomePage=welcomePage"],
+        "css": ["welcome.css"],
+        "js": ["functions.js", "welcome.js"]
+    }]
+}

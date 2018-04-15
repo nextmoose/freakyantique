@@ -6,7 +6,7 @@ Promise.all([
     .then(obj => new Promise((resolve, reject) => {
         try{
             obj[1].innerHTML = "Yesterday"
-            obj[1].addEventListener('click', event => {
+            obj[0].addEventListener('click', event => {
                 event.preventPropogation();
                 obj[0].value = new Date(obj[0].value).yesterday();
             })

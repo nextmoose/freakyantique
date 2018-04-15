@@ -1,6 +1,18 @@
-const setValue = async function(selector, value) {
-    document.querySelector(selector).value = value
-};
-const clickLink = async function(selector) {
-    document.querySelector(selector).click()
-}
+const setValue = (selector, value) => new Promise((resolve, reject) => {
+    try {
+        document.querySelector(selector).value = value;
+        resolve();
+    }
+    catch (cause) {
+        reject(cause);
+    }
+});
+const clickLink = selector => new Promise((resolve, reject) => {
+    try {
+        document.querySelector(selector).click();
+        resolve();
+    }
+    catch (cause) {
+        reject(cause);
+    }
+});

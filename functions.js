@@ -1,3 +1,5 @@
+const success = success => console.log("SUCCESS:  "+JSON.stringify(success));
+const failure = failure => console.log("FAILURE:  "+JSON.stringify(failure));
 const querySelector = selector => new Promise((resolve, reject) => {
     try {
         resolve(document.querySelector(selector));
@@ -12,6 +14,3 @@ const createElement = () => new Promise((resolve, reject) => {
        reject(cause);
    }
 });
-const setValue = (selector, value) => querySelector(selector).then(element => element.value=value);
-const clickLink = selector => querySelector(selector).then(element => element.click());
-const prepend = (selector) => querySelector("#txthearingdate").then(element => element.parentNode.prepend())

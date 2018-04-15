@@ -10,7 +10,7 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
             defendant: element.children[2].innerText
         }))
     ).then(objects => setData("objects", objects))
-    // .then(objects => console.log(JSON.stringify(objects)))
-    .then(() => getData("objects").then(data => console.log(JSON.stringify(data))))
+    .then(objects => console.log(JSON.stringify(objects)))
+    .then(expected => getData("objects").then(observed => console.log(expected === observed)))
 // querySelector("input[value='Next']")
 //     .then(element => element.click(), failure => console.log("The end of the road."))

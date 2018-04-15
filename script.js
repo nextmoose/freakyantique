@@ -13,6 +13,6 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         }))
     ).then(objects => addData(objects))
     .then(objects => console.log(objects))
-    .then(() => sleep 10000)
+    .then(() => sleep(10000))
     .then(querySelector("input[value='Next']").then(element => element.click(), failure => console.log("The end of the road.")))
     .then(expected => getData().then(observed => console.log(observed)), failure => console.log("FAILURE:  "+JSON.stringify(failure)))

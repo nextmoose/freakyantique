@@ -7,8 +7,9 @@ console.log(new Date().yesterday());
 
 (button =>
     button.setText("Yesterday") &&
+    button.addEventListener('click', event => event.preventDefault()) &&
     document.getElementById('txthearingdate').parentNode.prepend(button) &&
-    button.addEventListener('click', event => event.preventDefault())
+    console.log('did it')
 )(document.createElement('button'))
 
 console.log('rock on');

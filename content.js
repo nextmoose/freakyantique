@@ -10,3 +10,4 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         }))
     ).then(chrome.runtime.sendMessage)
     .then(querySelector("input[value='Next']").then(element => element.click(), failure => console.log("The end of the road.")))
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({request, sender, sendResponse}));

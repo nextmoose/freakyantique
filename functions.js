@@ -2,7 +2,7 @@ const success = success => console.log("SUCCESS:  "+JSON.stringify(success));
 const failure = failure => console.log("FAILURE:  "+JSON.stringify(failure));
 const querySelector = selector => new Promise((resolve, reject) => {
     try {
-        const element = resolve(document.querySelector(selector));
+        const element = document.querySelector(selector);
         if(element){
             resolve(element);
         }else{
@@ -19,3 +19,4 @@ const createElement = tag => new Promise((resolve, reject) => {
        reject(cause);
    }
 });
+createElement("script")

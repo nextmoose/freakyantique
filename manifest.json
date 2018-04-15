@@ -11,5 +11,9 @@
         "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do?welcomePage=welcomePage"],
         "css": ["welcome.css"],
         "js": ["functions.js", "welcome.js"]
+    }, {
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do?fromSidebar=true&searchLanding=searchLanding&searchType=hearingDate&searchDivision=T&searchFipsCode=013&curentFipsCode=013"],
+        "css": ["hearingsearch.css"]
+        "js": ["functions.js", "hearingsearch.js"]
     }]
 }

@@ -1,5 +1,10 @@
-const success = success => console.log("SUCCESS:  "+JSON.stringify(success));
-const failure = failure => console.log("FAILURE:  "+JSON.stringify(failure));
+const logit = message => value => {
+    console.log(message)
+    console.log(value)
+    return value
+};
+const success = success => logit("SUCCESS:");
+const failure = failure => logit("FAILURE:");
 const querySelector = selector => new Promise((resolve, reject) => {
     try {
         console.log('trying...');

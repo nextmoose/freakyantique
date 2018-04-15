@@ -1,2 +1,18 @@
-Promise.all([querySelector("#txthearingdate")])
+Promise.all([
+        querySelector("#txthearingdate"),
+        createElement("button")
+    ])
+    .then(success, failure)
+    .then(obj => new Promise((resolve, reject) => {
+        try{
+            obj[1].innerHTML = "Yesterday"
+            obj[1].addEventListener('click', event => {
+                event.preventPropogation();
+                obj[0].value = new Date(obj[0].value).yesterday();
+            })
+            obj[0].parentNode.prepend(obj[1]);
+        }catch(cause){
+            reject(cause)
+        }
+    }))
     .then(success, failure);

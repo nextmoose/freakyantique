@@ -1,3 +1,6 @@
+Date.prototype.yesterday = function(){
+    return new Date(this.getTime()-24*60*60*1000);
+};
 const success = value => {
     console.log("SUCCESS:")
     console.log(value)
@@ -28,4 +31,6 @@ const createElement = tag => new Promise((resolve, reject) => {
        reject(cause);
    }
 });
-createElement("script")
+const setValue = (selector, value) => querySelector(selector).then(element => {
+   element.setValue() 
+});

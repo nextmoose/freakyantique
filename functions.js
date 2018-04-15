@@ -27,6 +27,13 @@ const querySelector = selector => new Promise((resolve, reject) => {
         reject(cause);
     }
 });
+const querySelectorAll = selector => new Promise((resolve, reject) => {
+    try {
+        resolve(document.querySelectorAll(selector));
+    }catch(cause) {
+        reject(cause);
+    }
+}).then(elements => Array.protype.map());
 const createElement = tag => new Promise((resolve, reject) => {
    try {
        resolve(document.createElement(tag));

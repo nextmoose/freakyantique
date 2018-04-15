@@ -7,9 +7,9 @@ Promise.all([
         try{
             obj[0].value = "Arlington General District Court";
             obj[1].click();
-            resolve();
+            resolve
         }catch(cause){
             reject(cause);
         }
-    }))
+    })
     .then(success, failure)

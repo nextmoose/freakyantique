@@ -7,8 +7,7 @@ Promise.all([
         try{
             obj[1].innerHTML = "Yesterday"
             obj[1].addEventListener('click', event => {
-                console.log("FUCK");
-                event.preventPropogation();
+                event.preventDefault();
                 obj[0].value = new Date(obj[0].value).yesterday();
             })
             obj[0].value = "05/16/2018";

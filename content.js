@@ -1,6 +1,8 @@
 const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject())(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({ request, sender, sendResponse }));
+
 querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
     .then(rows => rows
         .filter((element, index) => index > 0)
@@ -10,4 +12,3 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         }))
     ).then(chrome.runtime.sendMessage)
     .then(querySelector("input[value='Next']").then(element => element.click(), failure => console.log("The end of the road.")))
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({request, sender, sendResponse}));

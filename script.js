@@ -2,8 +2,7 @@ const querySelector = selector => new Promise((resolve, reject) => (element => e
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 const setData = value => new Promise((resolve, reject) => chrome.storage.local.set({key: value}, () => resolve(value)));
 const getData = () => new Promise((resolve, reject) => chrome.storage.local.get(["key"], value => resolve(value)));
-const incData = value => getData().then(alpha => (beta => setData(beta.concat(value)))(alpha ? alpha : []))
-
+const addData = value => getData().then(alpha => setData((alpha==={}?[]:alpha).concat(value)));
 querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
     .then(rows => rows
         .filter((element, index) => index > 0)
@@ -11,7 +10,7 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
             caseNumber: element.children[1].innerText,
             defendant: element.children[2].innerText
         }))
-    ).then(objects => incData(objects))
+    ).then(objects => addData(objects))
     .then(objects => console.log(JSON.stringify(objects)))
     .then(expected => getData().then(observed => console.log(observed)), failure => console.log("FAILURE:  "+JSON.stringify(failure)))
 // querySelector("input[value='Next']")

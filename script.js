@@ -14,7 +14,7 @@ requestFileSystem().then(fileSystem => getFile(fileSystem, "data.txt", true)).th
                 caseNumber: element.children[1].innerText,
                 defendant: element.children[2].innerText
             }))
-        ).then(objects => new Blob(objects, {type: 'text/plain'}))
+        ).then(objects => new Blob(objects, {type: 'application/json'}))
 //        .then(writer.write)
         .then(querySelector("input[value='Next']").then(element => element.click(), failure => console.log("The end of the road.")))
 );

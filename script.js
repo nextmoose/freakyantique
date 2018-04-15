@@ -1,5 +1,6 @@
 
-const requestFileSystem = () => new Promise((resolve, reject) => (window.requestFileSystem || window.webkitRequestFileSystem).requestFileSystem(window.TEMPORARY, 5*1024*1024, resolve, reject));
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+const requestFileSystem = () => new Promise((resolve, reject) => window.requestFileSystem(window.TEMPORARY, 5*1024*1024, resolve, reject));
 const getFile = (fileSystem, name, create) => new Promise((resolve, reject) => fileSystem.getFile(name, {create}, resolve, reject));
 const createWriter = file => new Promise((resolve, reject) => file.createWrite(), resolve, reject);
 const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject())(document.querySelector(selector)));

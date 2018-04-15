@@ -25,4 +25,4 @@ Promise.all([
     ).then(chrome.runtime.sendMessage)
     .then(
         querySelector("input[value='Next']").then(element => element.click()),
-        failure => object.hearingDate.value=new Date(object.hearingDate.value).yesterday().format())
+        failure => querySelector("txthearingdate").then(hearingDate => hearingDate.value=new Date(hearingDate.value).yesterday().format()))

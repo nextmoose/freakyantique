@@ -8,7 +8,6 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
             caseNumber: element.children[1].innerText,
             defendant: element.children[2].innerText
         }))
-    );
-//    ).then(objects => console.log(JSON.stringify(objects)));
+    ).then(objects => console.log(JSON.stringify(objects)));
 // querySelector("input[value='Next']")
 //     .then(element => element.click(), failure => console.log("The end of the road."))

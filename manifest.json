@@ -2,8 +2,11 @@
     "manifest_version": 2,
     "name": "Court Scraper",
     "version": "0.0.0",
-    "content_scripts": [    {
-      "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
-      "js": ["script.js"]
-    }]
+    "content_scripts": [{
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
+        "js": ["script.js"]
+    }],
+    "permissions": [
+        "storage"
+    ]
 }

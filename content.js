@@ -10,7 +10,7 @@ Promise.all([
         querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr"),
         querySelector("txthearingdate")
     ])
-    .then(array => ({rows: object[0], hearingDate: object[1]}))
+    .then(array => ({rows: array[0], hearingDate: array[1]}))
     .then(object => object.rows
         .filter((element, index) => index > 0)
         .map(element => ({

@@ -1,4 +1,4 @@
-Promise.all({
-        hearingDateElement: querySelector("#txthearingdate")
-    })
+Promise.all([
+        querySelector("#txthearingdate")
+    ])
     .then(success, failure);

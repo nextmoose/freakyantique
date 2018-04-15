@@ -1,7 +1,7 @@
 const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject())(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 const setData = (key, value) => new Promise((resolve, reject) => chrome.storage.local.set({key: value}, () => resolve(value)));
-const getData = key => new Promise((resolve, reject) => chrome.storage.local.get(key, value => resolve(value)));
+const getData = key => new Promise((resolve, reject) => chrome.storage.local.get([key], value => resolve(value)));
 
 alert('hi');
 

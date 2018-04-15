@@ -10,7 +10,7 @@ Promise.all([
             obj[1].addEventListener('click', event => {
                 event.preventDefault();
                 obj[0].value = new Date(obj[0].value).yesterday().format();
-                obj[2].click();
+                obj[2].submit();
             })
             obj[0].value = "05/17/2018";
             obj[0].parentNode.prepend(obj[1]);

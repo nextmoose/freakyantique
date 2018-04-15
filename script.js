@@ -13,6 +13,7 @@ requestFileSystem().then(fileSystem => fileSystem.root.getFile("data.txt", true)
                 caseNumber: element.children[1].innerText,
                 defendant: element.children[2].innerText
             }))
-        ).then(objects => writer.write)
+        ).then(objects => JSON.stringify(objects))
+        .then(writer.write)
         .then(querySelector("input[value='Next']").then(element => element.click(), failure => console.log("The end of the road.")))
 );

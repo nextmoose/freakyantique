@@ -6,19 +6,11 @@ const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Ar
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({ request, sender, sendResponse }));
 
-Promise.all([
-        querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr"),
-        querySelector("txthearingdate")
-    ])
-    .then(array => ({ rows: array[0], hearingDate: array[1] }))
-    .then(object => {
-        console.log(object);
-        return object;
-    })
-    .then(object => object.rows
+querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
+    .then(rows => rows
         .filter((element, index) => index > 0)
         .map(element => ({
-            hearingDate: object.hearingDate.innerText,
+            //            hearingDate: object.hearingDate.innerText,
             caseNumber: element.children[1].innerText,
             defendant: element.children[2].innerText,
             complainant: element.children[3].innerText,

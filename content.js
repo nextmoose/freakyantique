@@ -1,7 +1,7 @@
 Date.prototype.yesterday = function() { return new Date(this.getTime() - 24 * 60 * 60 * 1000) };
 Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(-2) + "/" + ("0" + this.getDate()).slice(-2) + "/" + this.getFullYear() };
 
-const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject("missing element - selector="+selector))(document.querySelector(selector)));
+const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject("missing element - selector=" + selector))(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 const success = success => {
     console.log({ status: true, success });
@@ -28,6 +28,8 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
             result: element.children[6].innerText
         }))
     )).then(chrome.runtime.sendMessage)
-    .then(querySelector("input[value='Next']").then(element => element.click(), failure))
-    // .then(success, failure => querySelector("#txthearingdate").then(hearingDate => hearingDate.value="yesterday"))
+    .then(
+        querySelector("input[value='Next']").then(element => element.click(),
+            failure => querySelector("#txthearingdate").then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format()))
+    )
     .then(success, failure)

@@ -11,6 +11,10 @@ Promise.all([
         querySelector("txthearingdate")
     ])
     .then(array => ({ rows: array[0], hearingDate: array[1] }))
+    .then(object => {
+        console.log(object);
+        return object;
+    })
     .then(object => object.rows
         .filter((element, index) => index > 0)
         .map(element => ({

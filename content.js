@@ -13,7 +13,7 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         rows
         .filter((element, index) => index > 0)
         .map(element => ({
-            hearingDate: hearingDate.innerText,
+            hearingDate: hearingDate.value,
             caseNumber: element.children[1].innerText,
             defendant: element.children[2].innerText,
             complainant: element.children[3].innerText,

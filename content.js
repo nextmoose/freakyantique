@@ -3,6 +3,8 @@ Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(
 
 const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject())(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
+const success = success => console.log({status: true, success});
+const failure = failure => console.log({status: false, failure});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({ request, sender, sendResponse }));
 
@@ -22,4 +24,4 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
     .then(
         querySelector("input[value='Next']").then(element => element.click()),
         failure => querySelector("txthearingdate").then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format())
-    ).then(console.log, console.log);
+    ).then(success, failure);

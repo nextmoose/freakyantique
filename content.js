@@ -23,8 +23,8 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         }))
     )).then(chrome.runtime.sendMessage)
     .then(
-        querySelector("input[value='Next']").then(element => element.click())
-//        failure => console.log("its over")
+        querySelector("input[value='Next']").then(element => element.click()),
+        failure => console.log("its over: "+failure)
         //        failure => querySelector("#txthearingdate").then(hearingDate => hearingDate.value="yesterday")
         //            .then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format()
         //                .then(() => (new Date(hearingDate.value.getTime()>new Date("01/01/2018").getTime())) && querySelector("input[value='Search']").then(search => search.click()))

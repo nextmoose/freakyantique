@@ -28,6 +28,6 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
             result: element.children[6].innerText
         }))
     )).then(chrome.runtime.sendMessage)
-    .then(querySelector("input[value='Next']").then(element => element.click()), failure)
+    .then(querySelector("input[value='Next']").then(element => element.click(), failure))
     // .then(success, failure => querySelector("#txthearingdate").then(hearingDate => hearingDate.value="yesterday"))
     .then(success, failure)

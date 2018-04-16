@@ -1,0 +1,1 @@
+[].concat.apply([],cases).filter(element => element.complainant==="?")

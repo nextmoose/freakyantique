@@ -1,7 +1,7 @@
 Date.prototype.yesterday = function() { return new Date(this.getTime() - 24 * 60 * 60 * 1000) };
 Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(-2) + "/" + ("0" + this.getDate()).slice(-2) + "/" + this.getFullYear() };
 
-const querySelector = selector => new Promise((resolve, reject) => (element => element ? resolve(element) : reject("missing element - selector=" + selector))(document.querySelector(selector)));
+const querySelector = selector => new Promise((resolve, reject) => resolve(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 const success = success => {
     console.log({ status: true, success });
@@ -12,27 +12,24 @@ const failure = failure => {
     return failure;
 };
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({ request, sender, sendResponse }));
-
-querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
-    .then(rows => querySelector("#txthearingdate").then(hearingDate =>
-        rows
-        .filter((element, index) => index > 0)
-        .map(element => ({
-            hearingDate: hearingDate.value,
-            caseNumber: element.children[1].innerText,
-            defendant: element.children[2].innerText,
-            complainant: element.children[3].innerText,
-            charge: element.children[4].innerText,
-            hearingTime: element.children[5].innerText,
-            result: element.children[6].innerText
-        }))
-    )).then(chrome.runtime.sendMessage)
-    .then(
-        querySelector("input[value='Next']").then(element => element.click(),
-            failure => querySelector("#txthearingdate")
-            .then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format())
-            .then(() => querySelector("input[value='Search']")).then(element => element.click())
+const hearingPage = querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
+    .then(rows => rows.filter((element, index) => index > 0)
+        .map(element => [element.children[1].children[0].setAttribute('target', '_blank'), element.click()])
+    ).then(
+        querySelector("input[value='Next']").then(
+            console.log,
+            //            element => element.click(),
+            console.log
+            // failure => querySelector("#txthearingdate")
+            // .then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format())
+            // .then(() => querySelector("input[value='Search']")).then(element => element.click())
         )
     )
-    .then(success, failure)
+    .then(success, failure);
+
+const casePage = () => window.close();
+
+    Promise.all([
+        querySelector("#txthearingdate"),
+        querySelector("#toggleCase")
+    ]).then(array => ((hearingDate, toggleCase) => (hearingDate && !toggleCase && hearingPage()) || (!hearingDate && toggleCase && casePage()))(array[0], array[1]));

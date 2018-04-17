@@ -35,4 +35,4 @@ const hearingPage = () => alert("HEARING");
     Promise.all([
         querySelector("#txthearingdate"),
         querySelector("#toggleCase")
-    ]).then(array => ((hearingDate, toggleCase) => (hearingDate && !toggleCase && hearingPage()) || (!hearingDate && toggleCase && casePage()))(array[0], array[1]));
+    ]).then(array => ((hearingDate, toggleCase) => (hearingDate && !toggleCase && hearingPage()) || (!hearingDate && toggleCase && casePage()) || (!hearingDate && !toggleCase && alert('wtf')))(array[0], array[1]));

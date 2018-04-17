@@ -7,8 +7,11 @@
         "persistent": false
     },
     "content_scripts": [{
-        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do"],
-        "js": ["content.js"]
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do*"],
+        "js": ["common.js", "caseSearch.js"]
+    }, {
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/criminalDetail.do*"],
+        "js": ["common.js", "criminalDetail.js"]
     }],
     "permissions": [
         { "fileSystem": ["write", "retainEntries", "directory"] }

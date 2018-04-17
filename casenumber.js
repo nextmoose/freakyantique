@@ -32,4 +32,4 @@ Array.prototype.map.call(document.querySelectorAll("#toggleCase > td > table > t
         .filter(element => element.parity===1)
         .map(element => ({[element.key]: element.value}))
     )
-)
+).reduce((accumulator, currentValue) => Object.assign(currentValue, accumulator), [])

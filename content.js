@@ -12,7 +12,7 @@ const failure = failure => {
     return failure;
 };
 
-const hearingPage = querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
+const hearingPage2 = querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
     .then(rows => rows.filter((element, index) => index > 0)
         .map(element => [element.children[1].children[0].setAttribute('target', '_blank'), element.click()])
     ).then(
@@ -27,7 +27,10 @@ const hearingPage = querySelectorAll("body > table:nth-child(1) > tbody > tr:nth
     )
     .then(success, failure);
 
-const casePage = () => window.close();
+const casePage2 = () => window.close();
+
+const hearingPage = () => alert("HEARING");
+// const casePage = () => alert("CASE");
 
     Promise.all([
         querySelector("#txthearingdate"),

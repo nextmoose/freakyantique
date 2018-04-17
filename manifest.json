@@ -3,7 +3,7 @@
     "name": "Court Scraper",
     "version": "0.0.0",
     "background": {
-        "scripts":["background.js"],
+        "scripts": ["background.js"],
         "persistent": false
     },
     "content_scripts": [{

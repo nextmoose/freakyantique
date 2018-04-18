@@ -2,7 +2,7 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
     .then(rows => rows.filter((element, index) => index > 0)
         .filter((element, index) => index < 10)
         .map(element => element.children[1].children[0])
-        .map(element => element.setAttribute('target', '_blank'), element)
+        .map(element => (element.setAttribute('target', '_blank'), element))
         .map((element,index) => sleep(1000).then(() => element.click()))
         // ).then(
         //     querySelector("input[value='Next']").then(

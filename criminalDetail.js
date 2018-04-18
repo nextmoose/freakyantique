@@ -1,4 +1,4 @@
-document.querySelectorAll("#toggleCase > td > table > tbody > tr")
+querySelectorAll("#toggleCase > td > table > tbody > tr")
     .then(elements => [].concat.apply([], Array.prototype.map.call(elements, x => x)
         .map(row => Array.prototype.map.call(row.children, x => x)
             .map(element => element.innerText.trim())

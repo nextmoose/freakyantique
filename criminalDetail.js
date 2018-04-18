@@ -45,5 +45,6 @@ Promise.all([
             )
         ).reduce((accumulator, currentValue) => Object.assign(currentValue, accumulator), []))
     ]).then(array => ({ "caseInformation": array[0], "charge": array[1], "disposition": array[2] }))
+    .then(object => ({type: 2, value: object}))
     .then(sendMessage)
     .then(window.close, console.log)

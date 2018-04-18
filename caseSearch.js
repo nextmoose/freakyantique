@@ -1,9 +1,23 @@
-querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
-    .then(rows => rows.filter((element, index) => index > 0)
-        .map(element => element.children[1].children[0])
-        .map(element => (element.setAttribute('target', '_blank'), element))
-        .map((element, index) => (console.log(index), element))
-        .map((element, index) => sleep(100 * index, element).then(() => element.click()))
-    ).then(
-        querySelector("input[value='Next']").then(element => (element && !element.disabled) ? element.click() : querySelector("#txthearingdate").then(hearingDate => hearingDate.value = hearingDate.value==="" ? "08/01/2020" : new Date(hearingDate.value).yesterday().format()).then(() => querySelector("input[value='Search']")).then(element => element.click()))
-    ).then(success, failure)
+Promise.all([
+        querySelector("#txthearingdate"),
+        querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
+    ])
+    .then(array => sendMessage({ type: 0, value: array[0].innerText })
+        .then(() => array[1]
+            .filter((row, index) => index > 0)
+            .map(row => sendMessage({
+                    type: 1,
+                    value: {
+                        caseNumber: row.children[1].innerText.trim(),
+                        defendant: row.children[2].innerText.trim(),
+                        complainant: row.children[3].innerText.trim(),
+                        charge: row.children[4].innerText.trim(),
+                        hearingTime: row.children[5].innerText.trim(),
+                        result: row.children[6].innerText.trim()
+                    }
+                }).then(() => row.children[1].children[0])
+                .then(link => (link.setAttribute("target", "_blank"), link.click()))
+                .then(() => sendMessage({type: 3, value: row.children[1].innerText.trim()}))
+            )
+        ).then(() => sendMessage({type: 4, value: array[0].innerText}))
+    )

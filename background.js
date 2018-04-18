@@ -1,3 +1,8 @@
-const cases=[];
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => (cases.push(request), sendResponse()));
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => console.log({request, sender, sendResponse, cases}));
+
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => [
+    () => setTimeout(() => (console.log(request.value), sendResponse), 1000),
+    () => setTimeout(() => (console.log(request.value), sendResponse), 1000),
+    () => setTimeout(() => (console.log(request.value), sendResponse), 1000),
+    () => setTimeout(() => (console.log(request.value), sendResponse), 1000)
+][request.type]())

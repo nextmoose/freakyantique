@@ -4,8 +4,6 @@ Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(
 const querySelector = selector => new Promise((resolve, reject) => resolve(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 
-const setAttribute = (selector, value) => querySelector(selector).then(element => element.setAttribute(value) || element) ;
-
 const success = success => {
     console.log({ status: true, success });
     return success;

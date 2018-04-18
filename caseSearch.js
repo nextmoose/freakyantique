@@ -5,5 +5,5 @@ querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > tab
         .map((element, index) => (console.log(index), element))
         .map((element, index) => sleep(2000 * index, element).then(() => element.click()))
     ).then(
-        querySelector("input[value='Next']").then(element => (element || !element.disabled) ? element.click() : querySelector("#txthearingdate").then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format()).then(() => querySelector("input[value='Search']")).then(element => element.click()))
+        querySelector("input[value='Next']").then(element => (element && !element.disabled) ? element.click() : querySelector("#txthearingdate").then(hearingDate => hearingDate.value = new Date(hearingDate.value).yesterday().format()).then(() => querySelector("input[value='Search']")).then(element => element.click()))
     ).then(success, failure)

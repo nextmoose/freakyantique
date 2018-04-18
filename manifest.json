@@ -12,8 +12,8 @@
     }, {
         "matches": ["https://eapps.courts.state.va.us/gdcourts/criminalDetail.do*"],
         "js": ["common.js", "criminalDetail.js"]
-    }],
-    "permissions": [
-        { "fileSystem": ["write", "retainEntries", "directory"] }
-    ]
+    }, {
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/captchaReverification.do*"],
+        "js": ["common.js", "captchaReverification.js"]
+    }]
 }

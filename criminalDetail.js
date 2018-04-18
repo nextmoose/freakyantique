@@ -45,4 +45,4 @@ Promise.all([
             )
         ).reduce((accumulator, currentValue) => Object.assign(currentValue, accumulator), []))
     ]).then(array => ({ "caseInformation": array[0], "charge": array[1], "disposition": array[2] }))
-    .then(chrome.runtime.sendMessage).then(() => window.close(), alert)
+    .then(chrome.runtime.sendMessage).then(() => console.log("GOOD"), () => console.log("BAD"))

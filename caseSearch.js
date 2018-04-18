@@ -15,7 +15,8 @@ Promise.all([
                         hearingTime: row.children[5].innerText.trim(),
                         result: row.children[6].innerText.trim()
                     }
-                }).then(() => row.children[1].children[0])
+                }).then(response => console.log)
+                .then(() => row.children[1].children[0])
                 .then(link => (link.setAttribute("target", "_blank"), link.click()))
                 .then(() => sendMessage({type: 3, value: row.children[1].innerText.trim()}))
             )

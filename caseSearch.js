@@ -2,9 +2,10 @@ Promise.all([
         querySelector("#txthearingdate"),
         querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr")
     ])
-    .then(array => sendMessage({ type: 0, value: array[0].innerText })
+    .then(array => () => sendMessage({ type: 0, value: array[0].innerText })
         .then(() => array[1]
             .filter((row, index) => index > 0)
+            .filter((row, index) => index < 5)
             .map(row => sendMessage({
                     type: 1,
                     value: {
@@ -20,5 +21,6 @@ Promise.all([
                 .then(link => (link.setAttribute("target", "_blank"), link.click()))
                 .then(() => sendMessage({type: 3, value: row.children[1].innerText.trim()}))
             )
-        ).then(() => sendMessage({type: 4, value: array[0].innerText}))
+        ).then(array => array.reduce((accumulator, currentValue) => accumulator.then(currentValue)), new Promise(resolve => resolve()))
+        .then(() => sendMessage({type: 4, value: array[0].innerText}))
     )

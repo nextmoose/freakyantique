@@ -1,7 +1,7 @@
 
 const pages = [] ;
 
-const page = (request, sender, sendResponse) => pages.length===0 ? (pages.push(request), sendResponse(true)) : sendResponse(false);
+const page = (request, sender, sendResponse) => pages.length===0 ? (pages.push(request), sendResponse("YES")) : sendResponse("NO");
 
 const requests = [];
 

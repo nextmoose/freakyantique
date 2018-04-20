@@ -11,7 +11,8 @@ const scrape = (hearingDate, rows, search) => sendMessage({ type: 0, value: hear
             hearingTime: row.children[5].innerText.trim(),
             result: row.children[6].innerText.trim()
         }
-    })).reduce((accumulator, currentValue) => accumulator.then(currentValue()), new Promise(resolve => resolve())));
+    })).reduce((accumulator, currentValue) => accumulator.then(currentValue()), new Promise(resolve => resolve())))
+    .then(sendMessage({type: 2, value: hearingDate.value}));
 
 Promise.all([
         querySelector("#txthearingdate"),

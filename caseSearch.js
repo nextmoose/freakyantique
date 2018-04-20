@@ -1,6 +1,6 @@
 const initPage = (hearingDate, search) => ((hearingDate.value = "05/16/2018"), search.click());
 
-const scrape = (hearingDate, rows, search) => sendMessage({type: 1, value: hearingDate.value}).then(x => console.log(x));
+const scrape = (hearingDate, rows, search) => sendMessage({type: 0, value: hearingDate.value});
 
 Promise.all([
         querySelector("#txthearingdate"),

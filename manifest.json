@@ -7,7 +7,7 @@
         "persistent": false
     },
     "content_scripts": [{
-        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do?welcomePage=welcomePage"],
+        "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do?welcomePage=welcomePage", "https://eapps.courts.state.va.us/gdcourts/changeCourt.do*"],
         "js": ["common.js", "welcome.js"]
         }, {
         "matches": ["https://eapps.courts.state.va.us/gdcourts/caseSearch.do*"],

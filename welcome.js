@@ -7,5 +7,5 @@ querySelector("#txtcourts1")
     .then(array => (
         console.log(array[0]),
         array[1].initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null),
-        array[0].dispatchEvent(array[0])))
+        array[0].dispatchEvent(array[1])))
     .then(success, failure)

@@ -6,7 +6,7 @@ Promise.all([
         querySelector("#txthearingdate"),
         querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr"),
         querySelector("input[value='Search']")
-    ]).then(array => (array[0].value === "" ? initPage(hearingDate, search) : scrape(hearingDate, rows, search))
+    ]).then(array => (array[0].value === "" ? initPage(hearingDate, search) : scrape(hearingDate, rows, search)))
     .then(success, failure)
 
 

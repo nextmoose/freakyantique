@@ -1,6 +1,17 @@
 const initPage = (hearingDate, search) => ((hearingDate.value = "05/16/2018"), search.click());
 
-const scrape = (hearingDate, rows, search) => sendMessage({type: 0, value: hearingDate.value});
+const scrape = (hearingDate, rows, search) => sendMessage({ type: 0, value: hearingDate.value })
+    .then(rows => rows.map(row => () => sendMessage({
+        type: 1,
+        value: {
+            caseNumber: row.children[1].innerText.trim(),
+            defendant: row.children[2].innerText.trim(),
+            complainant: row.children[3].innerText.trim(),
+            charge: row.children[4].innerText.trim(),
+            hearingTime: row.children[5].innerText.trim(),
+            result: row.children[6].innerText.trim()
+        }
+    })).reduce((accumulator, currentValue) => accumulator.then(currentValue()), new Promise(resolve => resolve())));
 
 Promise.all([
         querySelector("#txthearingdate"),

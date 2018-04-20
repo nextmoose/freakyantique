@@ -3,7 +3,7 @@ Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(
 
 const querySelector = selector => new Promise((resolve, reject) => resolve(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
-const createElement = name => new Promise((resolve, reject) => resolve(document.createElement(name)));
+const createEvent = name => new Promise((resolve, reject) => resolve(document.createEvent(name)));
 
 
 const sendMessage = message => new Promise((resolve, reject) => chrome.runtime.sendMessage(message, resolve));

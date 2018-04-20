@@ -2,7 +2,7 @@ Promise.all([
         querySelector("#txthearingdate"),
         querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr"),
         querySelector("input[value='Search']")
-    ]).then(array => ((array[0].value === "" ? (array[0].value = "05/16/2018") : (true), array[2].click()))
+    ]).then(array => (array[0].value === "" ? ((array[0].value = "05/16/2018"), array[2].click() : (true)))
         .then(success, failure))
 
 

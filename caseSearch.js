@@ -1,8 +1,12 @@
+const initPage = (hearingDate, search) => ((hearingDate.value = "05/16/2018"), search.click());
+
+const scrape = (hearingDate, rows, search) => sendMessage({type: 1, value: hearingDate.value});
+
 Promise.all([
         querySelector("#txthearingdate"),
         querySelectorAll("body > table:nth-child(1) > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > form > table > tbody > tr:nth-child(3) > td > table > tbody > tr"),
         querySelector("input[value='Search']")
-    ]).then(array => (array[0].value === "" ? ((array[0].value = "05/16/2018"), array[2].click()) : (true)))
+    ]).then(array => (array[0].value === "" ? initPage(hearingDate, search) : scrape(hearingDate, rows, search))
     .then(success, failure)
 
 

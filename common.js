@@ -1,12 +1,14 @@
 Date.prototype.yesterday = function() { return new Date(this.getTime() - 24 * 60 * 60 * 1000) };
 Date.prototype.format = function() { return ("0" + (this.getMonth() + 1)).slice(-2) + "/" + ("0" + this.getDate()).slice(-2) + "/" + this.getFullYear() };
 
+Array.prototype.first = function() { return this[0] };
+
 const querySelector = selector => new Promise((resolve, reject) => resolve(document.querySelector(selector)));
 const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Array.prototype.map.call(document.querySelectorAll(selector), x => x)));
 const createEvent = name => new Promise(resolve => resolve(document.createEvent(name)));
 
 
-const sendMessage = message => new Promise((resolve, reject) => chrome.runtime.sendMessage(message, resolve));
+const sendMessage = message => new Promise((resolve, reject) => chrome.runtime.sendMessage(message, response => response.status ? resolve(response.value) : reject(response.value)));
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 

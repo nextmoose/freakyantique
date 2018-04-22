@@ -1,6 +1,6 @@
 const requests = [{ type: 4, stamp: new Date() }];
 
-const processImmediately = (request, sendResponse) => (requests.push(Object.assign({ stamp: new Date() }, request), sendResponse({status: true, value: null})));
+const processImmediately = (request, sendResponse) => (requests.push(Object.assign({ stamp: new Date() }), request), sendResponse({status: true, value: null}));
 
 const processDelayed = (request, sender, sendResponse, fun) => setTimeout(() => fun(request, sender, sendResponse), 1000)
 

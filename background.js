@@ -1,7 +1,11 @@
-const requests = [{ type: 4 }];
+const requests = [{ type: 4, stamp: new Date() }];
 
-const process = (request, sender, sendResponse, filters, fun) => requests.reverse().filter((element, index) => index === 0).filter(request => filters.includes(request.type)).length === 0 ? (requests.push(Object.assign({ stamp: new Date() }, request), sendResponse({status: true, value: null}))) : setTimeout(() => fun(request, sender, sendResponse), 1000)
+const processImmediately = (request, sendResponse) => (requests.push(Object.assign({ stamp: new Date() }, request), sendResponse({status: true, value: null})));
 
+const processDelayed = (request, sender, sendResponse, fun) => setTimeout(() => fun(request, sender, sendResponse), 1000)
+
+const process = (request, sender, sendResponse, filters, fun) => requests.reverse().filter((element, index) => index === 0).filter(request => filters.includes(request.type)).length === 1 ? processImmediately(request, sendResponse) : processDelayed(request, sender, sendResponse);
+        
 const startPage = (request, sender, sendResponse) => process(request, sender, sendResponse, [3, 4], startPage);
 
 const startRow = (request, sender, sendResponse) => process(request, sender, sendResponse, [0, 2], startRow);

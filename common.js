@@ -8,7 +8,7 @@ const querySelectorAll = selector => new Promise((resolve, reject) => resolve(Ar
 const createEvent = name => new Promise(resolve => resolve(document.createEvent(name)));
 
 
-const sendMessage = message => new Promise((resolve, reject) => chrome.runtime.sendMessage(message, response => response.status ? resolve(response.value) : reject(response.value)));
+const sendMessage = (type, value) => new Promise((resolve, reject) => chrome.runtime.sendMessage({type, value}, response => response.status ? resolve(response.value) : reject(response.value)));
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
